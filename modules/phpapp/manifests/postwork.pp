@@ -40,6 +40,7 @@ class phpapp::postwork {
 
   file { "varnish_config":
     name => "/etc/varnish/default.vcl",
+    notify  => Service["varnish"],  # this sets up the relationship
     ensure => file,
     owner => root,
     group => root,
