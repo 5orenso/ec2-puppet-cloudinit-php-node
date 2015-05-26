@@ -75,21 +75,21 @@ class phpapp::core {
   file { "phpapp_configfile_1":
     name    => "/var/www/${::php_domain_1}/zu/config/main.ini",
     ensure  => link,
-    target  => "/srv/config/ffe/${::php_appconfig}/${::php_domain_1}/config.js",
+    target  => "/srv/config/${::php_appconfig}/${::php_domain_1}/main.ini",
     require => Class["phpapp::prework"]
   } ->
 
   file { "phpapp_configfile_2":
     name    => "/var/www/${::php_domain_2}/zu/config/main.ini",
     ensure  => link,
-    target  => "/srv/config/ffe/${::php_appconfig}/${::php_domain_2}/config.js",
+    target  => "/srv/config/${::php_appconfig}/${::php_domain_2}/main.ini",
     require => Class["phpapp::prework"]
   } ->
 
   file { "phpapp_configfile_3":
     name    => "/var/www/${::php_domain_3}/zu/config/main.ini",
     ensure  => link,
-    target  => "/srv/config/ffe/${::php_appconfig}/${::php_domain_3}/config.js",
+    target  => "/srv/config/${::php_appconfig}/${::php_domain_3}/main.ini",
     require => Class["phpapp::prework"]
   }
 #  ->
