@@ -31,8 +31,5 @@ class base::core {
     package { 'imagemagick-common' :
         ensure => installed
     }
-    package { 'logwatch' :
-        ensure => installed
-    }
 
 }
