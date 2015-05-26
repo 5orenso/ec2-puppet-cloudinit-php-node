@@ -37,6 +37,15 @@ class phpapp::postwork {
     require => [Class["phpapp::prework"], Class["phpapp::core"]],
   }
 
+  file { "varnish_config":
+    name => "/etc/default/varnish",
+    ensure => file,
+    owner => root,
+    group => root,
+    mode  => 644,
+    source => "/srv/config/${::etc_config}/varnish",
+    require => [Class["phpapp::prework"], Class["phpapp::core"]],
+  } ->
 
   file { "varnish_config":
     name => "/etc/varnish/default.vcl",
