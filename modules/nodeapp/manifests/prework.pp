@@ -9,7 +9,7 @@ class nodeapp::prework {
     }
 
     file { "nodeapp_log" :
-        name   => "/var/log/${::appname}",
+        name   => "/var/log/${::node_appname}",
         ensure => "directory",
         owner  => "www-data",
         group  => "www-data",
@@ -17,7 +17,7 @@ class nodeapp::prework {
     }
 
     file { "nodeapp_run" :
-        name   => "/var/run/${::appname}",
+        name   => "/var/run/${::node_appname}",
         ensure => "directory",
         owner  => "www-data",
         group  => "www-data",

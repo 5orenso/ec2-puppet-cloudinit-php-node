@@ -26,6 +26,10 @@ sudo rm -f /var/log/upstart/simple-blog.log
 sudo rm -rf /var/log/simple-blog/
 sudo rm -rf /var/run/simple-blog/
 
+sudo rm -rf /var/www/dev.zu.no/
+sudo rm -rf /var/www/dealer.flyfisheurope.com/
+sudo rm -rf /var/www/www.flyfisheurope.com/
+
 # Check all files.
 sudo ps aux | grep node && sudo ls -al /srv/ /etc/init/simple-blog.conf /etc/logrotate.d/simple-blog /var/log/simple-blog/ /etc/puppet/ /var/run/simple-blog/
 
