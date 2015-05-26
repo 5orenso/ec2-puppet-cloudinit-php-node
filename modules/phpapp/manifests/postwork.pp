@@ -43,7 +43,7 @@ class phpapp::postwork {
     owner => root,
     group => root,
     mode  => 644,
-    source => "/srv/config/${::etc_config}/varnish",
+    source => "/srv/config/${::etc_config}/default/varnish",
     require => [Class["phpapp::prework"], Class["phpapp::core"]],
   } ->
 
