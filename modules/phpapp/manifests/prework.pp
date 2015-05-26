@@ -9,7 +9,7 @@ class phpapp::prework {
   }
 
   file { "phpapp_log" :
-    name   => "/var/log/${::node_appname}",
+    name   => "/var/log/${::php_appname}",
     ensure => "directory",
     owner  => "www-data",
     group  => "www-data",
