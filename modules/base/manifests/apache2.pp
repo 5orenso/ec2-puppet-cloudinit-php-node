@@ -20,4 +20,21 @@ class base::apache2 {
     require => Package['apache2']
   }
 
+  # define the service to restart
+  service { "apache2":
+    ensure  => "running",
+    enable  => "true",
+    require => Package["apache2"],
+  }
+
+  # add a notify to the file resource
+  file { "/etc/apache2/apache2.conf":
+    notify  => Service["apache2"],  # this sets up the relationship
+    mode    => 644,
+    owner   => "root",
+    group   => "root",
+    require => Package["apache2"],
+#    content => template("ssh/sshd_config.erb"),
+  }
+
 }
