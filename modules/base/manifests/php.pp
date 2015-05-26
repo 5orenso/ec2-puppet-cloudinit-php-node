@@ -22,15 +22,16 @@ class base::php {
   package { 'php5-gd' :
     ensure => installed,
   }
-  exec { 'set_php_pear_config' :
-    command => 'pear config-set auto_discover 1',
-    path    => '/usr/local/bin/:/usr/bin/:/bin/',
-    require => Package['php5'],
-  }
+#  exec { 'set_php_pear_config' :
+#    command => 'pear config-set auto_discover 1',
+#    path    => '/usr/local/bin/:/usr/bin/:/bin/',
+#    require => Package['php5'],
+#  }
   exec { 'add_pear_repo_1' :
     command => 'pear channel-discover pear.pearplex.net',
     path    => '/usr/local/bin/:/usr/bin/:/bin/',
-    require => Exec['set_php_pear_config'],
+#    require => Exec['set_php_pear_config'],
+    require => Package['php5'],
   }
   exec { 'install_php_excel' :
     command => 'pear install pearplex/PHPExcel',
