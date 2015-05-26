@@ -6,7 +6,7 @@ class phpapp::system {
     owner => root,
     group => root,
     mode  => 644,
-    source => "/srv/${::php_appname}/etc/logrotate.conf",
+    source => "/var/www/${::php_domain_1}/zu/etc/logrotate.conf",
     require => [Class["phpapp::prework"], Class["phpapp::core"]],
   }
 
