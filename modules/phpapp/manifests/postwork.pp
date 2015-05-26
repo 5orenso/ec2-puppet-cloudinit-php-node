@@ -2,6 +2,7 @@ class phpapp::postwork {
 
   file { "apache2_apache2_conf":
     name => "/etc/apache2/apache2.conf",
+    notify  => Service["apache2"],  # this sets up the relationship
     ensure => file,
     owner => root,
     group => root,
@@ -18,6 +19,7 @@ class phpapp::postwork {
 
   file { "apache2_sites_enabled_1":
     name => "/etc/apache2/sites-enabled/${::php_domain_1}",
+    notify  => Service["apache2"],  # this sets up the relationship
     ensure => file,
     owner => root,
     group => root,
