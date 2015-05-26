@@ -47,7 +47,7 @@ class phpapp::postwork {
     require => [Class["phpapp::prework"], Class["phpapp::core"]],
   } ->
 
-  file { "varnish_config":
+  file { "default_varnish":
     name => "/etc/varnish/default.vcl",
     notify  => Service["varnish"],  # this sets up the relationship
     ensure => file,
