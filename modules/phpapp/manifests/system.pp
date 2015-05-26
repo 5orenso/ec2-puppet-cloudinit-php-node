@@ -10,4 +10,6 @@ class phpapp::system {
     require => [Class["phpapp::prework"], Class["phpapp::core"]],
   }
 
+  include phpapp::postwork
+
 }
