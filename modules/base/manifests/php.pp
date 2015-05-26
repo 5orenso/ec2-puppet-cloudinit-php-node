@@ -27,17 +27,17 @@ class base::php {
     path    => '/usr/local/bin/:/usr/bin/:/bin/',
     require => Package['php5'],
   }
-  exec { 'add_pear_repo_1' :
-    command => 'pear channel-discover pear.pearplex.net',
-    path    => '/usr/local/bin/:/usr/bin/:/bin/',
-#    require => Exec['set_php_pear_config'],
-    require => Package['php5'],
-  }
-  exec { 'install_php_excel' :
-    command => 'pear install pearplex/PHPExcel',
-    path    => '/usr/local/bin/:/usr/bin/:/bin/',
-    require => Exec['add_pear_repo_1'],
-  }
+#  exec { 'add_pear_repo_1' :
+#    command => 'pear channel-discover pear.pearplex.net',
+#    path    => '/usr/local/bin/:/usr/bin/:/bin/',
+##    require => Exec['set_php_pear_config'],
+#    require => Package['php5'],
+#  }
+#  exec { 'install_php_excel' :
+#    command => 'pear install pearplex/PHPExcel',
+#    path    => '/usr/local/bin/:/usr/bin/:/bin/',
+#    require => Exec['add_pear_repo_1'],
+#  }
   exec { 'install_php_main' :
     command => 'pear install Mail',
     path    => '/usr/local/bin/:/usr/bin/:/bin/',
