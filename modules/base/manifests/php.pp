@@ -37,7 +37,7 @@ class base::php {
     path    => '/usr/local/bin/:/usr/bin/:/bin/',
     require => Exec['add_pear_repo_1'],
   }
-  exec { 'install_php_excel' :
+  exec { 'install_php_main' :
     command => 'pear install Mail',
     path    => '/usr/local/bin/:/usr/bin/:/bin/',
     require => Exec['add_pear_repo_1'],
