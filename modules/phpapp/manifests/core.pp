@@ -15,7 +15,7 @@ class phpapp::core {
     group  => "www-data",
     mode   => 775,
   } ->
-  file { "phpapp_ensure_domain_1":
+  file { "phpapp_ensure_domain_zu_1":
     name   => "/var/www/${::php_domain_1}/zu",
     ensure => "directory",
     owner  => "www-data",
@@ -29,7 +29,7 @@ class phpapp::core {
     group  => "www-data",
     mode   => 775,
   } ->
-  file { "phpapp_ensure_domain_2":
+  file { "phpapp_ensure_domain_zu_2":
     name   => "/var/www/${::php_domain_2}/zu",
     ensure => "directory",
     owner  => "www-data",
@@ -43,7 +43,7 @@ class phpapp::core {
     group  => "www-data",
     mode   => 775,
   } ->
-  file { "phpapp_ensure_domain_3":
+  file { "phpapp_ensure_domain_zu_3":
     name   => "/var/www/${::php_domain_3}/zu",
     ensure => "directory",
     owner  => "www-data",
