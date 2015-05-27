@@ -58,4 +58,25 @@ class phpapp::postwork {
     require => [Class["phpapp::prework"], Class["phpapp::core"]],
   }
 
+  file { "php5_php_ini":
+    name => "/etc/php5/apache2/php.ini",
+    ensure => file,
+    owner => root,
+    group => root,
+    mode  => 644,
+    source => "/srv/config/${::php_config}/apache2/php.ini",
+    require => [Class["phpapp::prework"], Class["phpapp::core"]],
+  }
+
+  file { "php5_php_mongo_ini":
+    name => "/etc/php5/apache2/conf.d/20-mongo.ini",
+    ensure => file,
+    owner => root,
+    group => root,
+    mode  => 644,
+    source => "/srv/config/${::php_config}/mods-available/mongo.ini",
+    require => [Class["phpapp::prework"], Class["phpapp::core"]],
+  }
+
+
 }
