@@ -16,4 +16,11 @@ class phpapp::prework {
     mode   => 750,
   }
 
+  file { "phpapp_run" :
+    name   => "/var/run/${::php_appname}",
+    ensure => "directory",
+    owner  => "www-data",
+    group  => "www-data",
+    mode   => 750,
+  }
 }
