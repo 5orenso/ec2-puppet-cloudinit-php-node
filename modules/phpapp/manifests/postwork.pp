@@ -88,4 +88,10 @@ class phpapp::postwork {
     require => [Class["phpapp::prework"], Class["phpapp::core"]],
   }
 
+  exec { 'do_custom_afterwork' :
+    command => 'bash /srv/config/${::etc_config}/run-once.sh',
+    path    => '/usr/local/bin/:/usr/bin/:/bin/:/usr/sbin/',
+    require => [Class["phpapp::prework"], Class["phpapp::core"]],
+  }
+
 }
