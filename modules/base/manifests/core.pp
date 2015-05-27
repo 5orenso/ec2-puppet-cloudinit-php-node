@@ -31,5 +31,7 @@ class base::core {
     package { 'imagemagick-common' :
         ensure => installed
     }
-
+    package { 's3cmd' :
+        ensure => installed
+    }
 }
