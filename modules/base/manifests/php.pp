@@ -44,6 +44,12 @@ class base::php {
     require => Package['php5']
   }
 
+  exec { 'install_php_mongo_driver' :
+    command => 'pecl install mongo',
+    path    => '/usr/local/bin/:/usr/bin/:/bin/',
+    require => Package['php5', 'php5-dev', 'php5-cli', 'php-pear']
+  }
+
 #
 #exec { 'add_php_repo_2' :
 #    command => 'pear channel-discover pear.phpunit.de',
