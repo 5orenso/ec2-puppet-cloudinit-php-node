@@ -50,6 +50,36 @@ class base::php {
     require => Package['php5', 'php5-dev', 'php5-cli', 'php-pear']
   }
 
+
+  file { "phpapp_www" :
+    name   => "/var/www/",
+    ensure => "directory",
+    owner  => "root",
+    group  => "www-data",
+    mode   => 750,
+  } ->
+
+  file { "phpapp_www_lib" :
+    name   => "/var/www/lib/",
+    ensure => "directory",
+    owner  => "root",
+    group  => "www-data",
+    mode   => 750,
+  } ->
+
+  exec { 'install_php_twig_download' :
+    command => 'wget https://github.com/twigphp/Twig/archive/v1.18.1.tar.gz -O /var/www/lib/v1.18.1.tar.gz',
+    path    => '/usr/local/bin/:/usr/bin/:/bin/'
+  } ->
+  exec { 'install_php_twig_unpack' :
+    command => 'tar -zxvf /var/www/lib/v1.18.1.tar.gz -C /var/www/lib/',
+    path    => '/usr/local/bin/:/usr/bin/:/bin/'
+  } ->
+  exec { 'install_php_twig_symlink' :
+    command => 'ln -s /var/www/lib/Twig-1.18.1 /var/www/lib/Twig',
+    path    => '/usr/local/bin/:/usr/bin/:/bin/'
+  }
+
 #
 #exec { 'add_php_repo_2' :
 #    command => 'pear channel-discover pear.phpunit.de',
