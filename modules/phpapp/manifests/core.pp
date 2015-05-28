@@ -29,6 +29,13 @@ class phpapp::core {
     group  => "www-data",
     mode   => 775,
   } ->
+  file { "phpapp_ensure_images_cache_1":
+    name   => "/var/www/${::php_domain_1}/images/cache",
+    ensure => "directory",
+    owner  => "www-data",
+    group  => "www-data",
+    mode   => 775,
+  } ->
   file { "phpapp_ensure_images_index_1":
     name    => "/var/www/${::php_domain_1}/images/index.php",
     ensure  => link,
@@ -63,6 +70,13 @@ class phpapp::core {
     group  => "www-data",
     mode   => 775,
   } ->
+  file { "phpapp_ensure_images_cache_2":
+    name   => "/var/www/${::php_domain_2}/images/cache",
+    ensure => "directory",
+    owner  => "www-data",
+    group  => "www-data",
+    mode   => 775,
+  } ->
   file { "phpapp_ensure_images_index_2":
     name    => "/var/www/${::php_domain_2}/images/index.php",
     ensure  => link,
@@ -92,6 +106,13 @@ class phpapp::core {
   } ->
   file { "phpapp_ensure_images_3":
     name   => "/var/www/${::php_domain_3}/images",
+    ensure => "directory",
+    owner  => "www-data",
+    group  => "www-data",
+    mode   => 775,
+  } ->
+  file { "phpapp_ensure_images_cache_3":
+    name   => "/var/www/${::php_domain_3}/images/cache",
     ensure => "directory",
     owner  => "www-data",
     group  => "www-data",
