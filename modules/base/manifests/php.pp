@@ -83,7 +83,21 @@ class base::php {
   exec { 'install_php_aws_download' :
     command => 'wget https://github.com/aws/aws-sdk-php/releases/download/3.0.0/aws.phar -O /var/www/lib/aws.phar',
     path    => '/usr/local/bin/:/usr/bin/:/bin/'
+  } ->
+
+  exec { 'install_php_excel_download' :
+    command => 'wget https://s3-eu-west-1.amazonaws.com/ffe-static-web/php/PHPExcel_1.8.0.zip -O /var/www/lib/PHPExcel_1.8.0.zip',
+    path    => '/usr/local/bin/:/usr/bin/:/bin/'
+  } ->
+  exec { 'install_php_excel_unpack' :
+    command => 'unzip /var/www/lib/PHPExcel_1.8.0.zip -d /var/www/lib/',
+    path    => '/usr/local/bin/:/usr/bin/:/bin/'
+  } ->
+  exec { 'install_php_excel_symlink' :
+    command => 'ln -s /var/www/lib/Classes /var/www/lib/PHPExcel',
+    path    => '/usr/local/bin/:/usr/bin/:/bin/'
   }
+
 #
 #exec { 'add_php_repo_2' :
 #    command => 'pear channel-discover pear.phpunit.de',
