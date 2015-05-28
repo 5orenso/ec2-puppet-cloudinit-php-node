@@ -22,6 +22,26 @@ class phpapp::core {
     group  => "www-data",
     mode   => 775,
   } ->
+  file { "phpapp_ensure_images_1":
+    name   => "/var/www/${::php_domain_1}/images",
+    ensure => "directory",
+    owner  => "www-data",
+    group  => "www-data",
+    mode   => 775,
+  } ->
+  file { "phpapp_ensure_images_index_1":
+    name    => "/var/www/${::php_domain_1}/images/index.php",
+    ensure  => link,
+    target  => "/var/www/${::php_domain_1}/zu/images/index.php",
+    require => Class["phpapp::prework"]
+  } ->
+  file { "phpapp_ensure_images_pix_1":
+    name    => "/var/www/${::php_domain_1}/images/pix.gif",
+    ensure  => link,
+    target  => "/var/www/${::php_domain_1}/zu/images/pix.gif",
+    require => Class["phpapp::prework"]
+  } ->
+
   file { "phpapp_ensure_domain_2":
     name   => "/var/www/${::php_domain_2}",
     ensure => "directory",
@@ -36,6 +56,26 @@ class phpapp::core {
     group  => "www-data",
     mode   => 775,
   } ->
+  file { "phpapp_ensure_images_2":
+    name   => "/var/www/${::php_domain_2}/images",
+    ensure => "directory",
+    owner  => "www-data",
+    group  => "www-data",
+    mode   => 775,
+  } ->
+  file { "phpapp_ensure_images_index_2":
+    name    => "/var/www/${::php_domain_2}/images/index.php",
+    ensure  => link,
+    target  => "/var/www/${::php_domain_2}/zu/images/index.php",
+    require => Class["phpapp::prework"]
+  } ->
+  file { "phpapp_ensure_images_pix_2":
+    name    => "/var/www/${::php_domain_2}/images/pix.gif",
+    ensure  => link,
+    target  => "/var/www/${::php_domain_2}/zu/images/pix.gif",
+    require => Class["phpapp::prework"]
+  } ->
+
   file { "phpapp_ensure_domain_3":
     name   => "/var/www/${::php_domain_3}",
     ensure => "directory",
@@ -50,6 +90,26 @@ class phpapp::core {
     group  => "www-data",
     mode   => 775,
   } ->
+  file { "phpapp_ensure_images_3":
+    name   => "/var/www/${::php_domain_3}/images",
+    ensure => "directory",
+    owner  => "www-data",
+    group  => "www-data",
+    mode   => 775,
+  } ->
+  file { "phpapp_ensure_images_index_3":
+    name    => "/var/www/${::php_domain_3}/images/index.php",
+    ensure  => link,
+    target  => "/var/www/${::php_domain_3}/zu/images/index.php",
+    require => Class["phpapp::prework"]
+  } ->
+  file { "phpapp_ensure_images_pix_3":
+    name    => "/var/www/${::php_domain_3}/images/pix.gif",
+    ensure  => link,
+    target  => "/var/www/${::php_domain_3}/zu/images/pix.gif",
+    require => Class["phpapp::prework"]
+  } ->
+
 
   exec { "phpapp_download_src_1":
     command => "git clone ${::php_gitrepo} /var/www/${::php_domain_1}/zu/",
