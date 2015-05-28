@@ -78,8 +78,12 @@ class base::php {
   exec { 'install_php_twig_symlink' :
     command => 'ln -s /var/www/lib/Twig-1.18.1 /var/www/lib/Twig',
     path    => '/usr/local/bin/:/usr/bin/:/bin/'
-  }
+  } ->
 
+  exec { 'install_php_aws_download' :
+    command => 'wget https://github.com/aws/aws-sdk-php/releases/download/3.0.0/aws.phar -O /var/www/lib/aws.phar',
+    path    => '/usr/local/bin/:/usr/bin/:/bin/'
+  }
 #
 #exec { 'add_php_repo_2' :
 #    command => 'pear channel-discover pear.phpunit.de',
