@@ -6,7 +6,7 @@ class phpapp::postwork {
     group => root,
     mode  => 644,
     source => "/srv/config/${::php_config}/apache2/php.ini",
-    require => [Class["base::apache2"], Class["base::php"], Class["phpapp::prework"], Class["phpapp::core"]],
+    require => [Exec["base::apache2:enable_module_rewrite"], Class["base::php"], Class["phpapp::prework"], Class["phpapp::core"]],
   } ->
 
   file { "php5_php_apapche2_mongo_ini":
@@ -16,7 +16,7 @@ class phpapp::postwork {
     group => root,
     mode  => 644,
     source => "/srv/config/${::php_config}/mods-available/mongo.ini",
-    require => [Class["base::apache2"], Class["base::php"], Class["phpapp::prework"], Class["phpapp::core"]],
+    require => [Class["phpapp::prework"], Class["phpapp::core"]],
   } ->
 
   file { "php5_php_cli_mongo_ini":
@@ -26,7 +26,7 @@ class phpapp::postwork {
     group => root,
     mode  => 644,
     source => "/srv/config/${::php_config}/mods-available/mongo.ini",
-    require => [Class["base::apache2"], Class["base::php"], Class["phpapp::prework"], Class["phpapp::core"]],
+    require => [Class["phpapp::prework"], Class["phpapp::core"]],
   } ->
 
   file { "apache2_sites_enabled_1":
@@ -70,7 +70,7 @@ class phpapp::postwork {
     group => root,
     mode  => 644,
     source => "/srv/config/${::etc_config}/default/varnish",
-    require => [Class["base::apache2"], Class["base::php"], Class["phpapp::prework"], Class["phpapp::core"]],
+    require => [Class["phpapp::prework"], Class["phpapp::core"]],
   } ->
 
   file { "default_varnish":
@@ -81,14 +81,14 @@ class phpapp::postwork {
     group => root,
     mode  => 644,
     source => "/srv/config/${::varnish_config}/default.vcl",
-    require => [Class["base::apache2"], Class["base::php"], Class["phpapp::prework"], Class["phpapp::core"]],
+    require => [Class["phpapp::prework"], Class["phpapp::core"]],
   }
 
 
   exec { 'do_custom_afterwork' :
     command => "bash /srv/config/${::etc_config}/run-once.sh",
     path    => "/usr/local/bin/:/usr/bin/:/bin/:/usr/sbin/",
-    require => [Class["base::apache2"], Class["base::php"], Class["phpapp::prework"], Class["phpapp::core"]],
+    require => [Class["phpapp::prework"], Class["phpapp::core"]],
   }
 
 }
