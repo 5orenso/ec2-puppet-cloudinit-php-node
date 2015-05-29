@@ -10,6 +10,7 @@ class base::varnish {
     ensure  => "running",
     enable  => "true",
     require => Package["varnish"],
+    subscribe => File["/etc/varnish/default.vcl"],
   }
 
 }

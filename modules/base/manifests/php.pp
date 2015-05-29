@@ -41,7 +41,7 @@ class base::php {
   exec { 'install_php_main' :
     command => 'pear install Mail',
     path    => '/usr/local/bin/:/usr/bin/:/bin/',
-    require => Package['php5']
+    require => Package['php5', 'php5-dev', 'php5-cli', 'php-pear']
   }
 
   exec { 'install_php_mongo_driver' :
