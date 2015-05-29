@@ -37,7 +37,7 @@ class phpapp::postwork {
     group => root,
     mode  => 644,
     source => "/srv/config/${::apache_config}/sites-enabled/${::php_domain_1}",
-    require => [Class["base::apache2"], Class["base::php"], Class["phpapp::prework"], Class["phpapp::core"]],
+    require => [Class["phpapp::prework"], Class["phpapp::core"]],
   } ->
   file { "apache2_ports_conf":
     name => "/etc/apache2/ports.conf",
@@ -46,7 +46,7 @@ class phpapp::postwork {
     group => root,
     mode  => 644,
     source => "/srv/config/${::apache_config}/ports.conf",
-    require => [Class["base::apache2"], Class["base::php"], Class["phpapp::prework"], Class["phpapp::core"]],
+    require => [Class["phpapp::prework"], Class["phpapp::core"]],
   } ->
   file { "apache2_httpd_conf":
     name => "/etc/apache2/httpd.conf",
@@ -60,7 +60,7 @@ class phpapp::postwork {
     group => root,
     mode  => 644,
     source => "/srv/config/${::apache_config}/apache2.conf",
-    require => [Class["base::apache2"], Class["base::php"], Class["phpapp::prework"], Class["phpapp::core"]],
+    require => [Class["phpapp::prework"], Class["phpapp::core"]],
   } ->
 
   file { "varnish_config":
