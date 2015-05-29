@@ -6,7 +6,7 @@ class phpapp::postwork {
     group => root,
     mode  => 644,
     source => "/srv/config/${::php_config}/apache2/php.ini",
-    require => [Exec["base::apache2:enable_module_rewrite"], Class["base::php"], Class["phpapp::prework"], Class["phpapp::core"]],
+    require => [Class["base::php"], Class["phpapp::prework"], Class["phpapp::core"]],
   } ->
 
   file { "php5_php_apapche2_mongo_ini":
