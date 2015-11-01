@@ -39,6 +39,26 @@ class phpapp::postwork {
     source => "/srv/config/${::apache_config}/sites-enabled/${::php_domain_1}",
     require => [Class["phpapp::prework"], Class["phpapp::core"]],
   } ->
+  file { "apache2_sites_enabled_2":
+    name => "/etc/apache2/sites-enabled/${::php_domain_2}",
+  #    notify  => Service["apache2"],  # this sets up the relationship
+    ensure => file,
+    owner => root,
+    group => root,
+    mode  => 644,
+    source => "/srv/config/${::apache_config}/sites-enabled/${::php_domain_2}",
+    require => [Class["phpapp::prework"], Class["phpapp::core"]],
+  } ->
+  file { "apache2_sites_enabled_3":
+    name => "/etc/apache2/sites-enabled/${::php_domain_3}",
+  #    notify  => Service["apache2"],  # this sets up the relationship
+    ensure => file,
+    owner => root,
+    group => root,
+    mode  => 644,
+    source => "/srv/config/${::apache_config}/sites-enabled/${::php_domain_3}",
+    require => [Class["phpapp::prework"], Class["phpapp::core"]],
+  } ->
   file { "apache2_ports_conf":
     name => "/etc/apache2/ports.conf",
     ensure => file,
