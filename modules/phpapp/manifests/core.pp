@@ -7,8 +7,8 @@ class phpapp::core {
     cwd     => "/srv/",
     require => Class["phpapp::prework"]
   } ->
-  exec { 'jboss chown':
-    command  => "/bin/chown -R www-data:www-data /srv/config/"
+  exec { 'www_data_chown':
+    command  => "/bin/chown -R www-data:www-data /srv/"
   } ->
   file { "phpapp_ensure_domain_1":
     name   => "/var/www/${::php_domain_1}",
