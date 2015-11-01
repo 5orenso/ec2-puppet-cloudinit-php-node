@@ -8,6 +8,14 @@ class nodeapp::core {
         require => Class["nodeapp::prework"]
     } ->
 
+    exec { 'www_data_chown':
+        command  => "/bin/chown -R www-data:www-data /srv/"
+    } ->
+
+    exec { 'www_data_chmod':
+        command  => "/bin/chmod -R 755 /srv/"
+    } ->
+
     exec { "nodeapp_download_src":
         command => "git clone ${::node_gitrepo} /srv/${::node_appname}/",
         path    => "/usr/local/bin/:/usr/bin/:/bin/",
