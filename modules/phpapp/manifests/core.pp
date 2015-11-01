@@ -8,8 +8,7 @@ class phpapp::core {
     require => Class["phpapp::prework"]
   } ->
   exec { 'jboss chown':
-    command  => "/bin/chown -R www-data:www-data /srv/config/",
-    require  => Excec['phpapp_download_config']
+    command  => "/bin/chown -R www-data:www-data /srv/config/"
   } ->
   file { "phpapp_ensure_domain_1":
     name   => "/var/www/${::php_domain_1}",
