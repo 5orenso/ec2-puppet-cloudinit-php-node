@@ -25,6 +25,9 @@ class base::core {
     package { 'zip' :
         ensure => installed
     }
+    package { 'unzip' :
+        ensure => installed
+    }
     package { 'imagemagick' :
         ensure => installed
     }

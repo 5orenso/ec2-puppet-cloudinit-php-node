@@ -38,6 +38,7 @@ pecl uninstall mongo
 
 sudo apt-get remove --purge nodejs
 sudo apt-get remove --purge unzip
+sudo apt-get remove --purge zip
 sudo apt-get remove --purge puppet
 sudo apt-get remove --purge php5
 sudo apt-get remove --purge php5-curl
