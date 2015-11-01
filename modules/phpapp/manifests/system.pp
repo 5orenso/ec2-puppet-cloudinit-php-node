@@ -1,6 +1,6 @@
 class phpapp::system {
 
-  file { "phpapp_logrotate":
+  file { "phpapp_logrotate_1":
     name => "/etc/logrotate.d/${::php_appname}",
     ensure => present,
     owner => root,
@@ -9,7 +9,7 @@ class phpapp::system {
     source => "/var/www/${::php_domain_1}/zu/etc/logrotate.conf",
     require => [Class["phpapp::prework"], Class["phpapp::core"]],
   }
-  file { "phpapp_logrotate":
+  file { "phpapp_logrotate_2":
     name => "/etc/logrotate.d/${::php_appname}",
     ensure => present,
     owner => root,
@@ -18,7 +18,7 @@ class phpapp::system {
     source => "/var/www/${::php_domain_2}/zu/etc/logrotate.conf",
     require => [Class["phpapp::prework"], Class["phpapp::core"]],
   }
-  file { "phpapp_logrotate":
+  file { "phpapp_logrotate_3":
     name => "/etc/logrotate.d/${::php_appname}",
     ensure => present,
     owner => root,
