@@ -1,13 +1,12 @@
 class phpapp::core {
   notice("I am a php ${::php_appname} and want the software")
 
-#  exec { "phpapp_download_config":
-#    command => "git clone ${::gitconfigrepo} /srv/config/",
-#    path    => "/usr/local/bin/:/usr/bin/:/bin/",
-#    cwd     => "/srv/",
-#    require => Class["phpapp::prework"]
-#  } ->
-
+  exec { "phpapp_download_config":
+    command => "git clone ${::gitconfigrepo} /srv/config/",
+    path    => "/usr/local/bin/:/usr/bin/:/bin/",
+    cwd     => "/srv/",
+    require => Class["phpapp::prework"]
+  } ->
   file { "phpapp_ensure_domain_1":
     name   => "/var/www/${::php_domain_1}",
     ensure => "directory",
