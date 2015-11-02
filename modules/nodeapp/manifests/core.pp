@@ -12,7 +12,7 @@ class nodeapp::core {
         command  => "/bin/chown -R www-data:www-data /srv/"
     } ->
 
-    exec { 'www_data_chmod':
+    exec { 'nodeapp_www_data_chmod':
         command  => "/bin/chmod -R 755 /srv/"
     } ->
 

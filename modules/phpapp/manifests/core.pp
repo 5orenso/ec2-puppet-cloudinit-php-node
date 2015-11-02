@@ -10,7 +10,7 @@ class phpapp::core {
   exec { 'phpapp_www_data_chown':
     command  => "/bin/chown -R www-data:www-data /srv/"
   } ->
-  exec { 'www_data_chmod':
+  exec { 'phpapp_www_data_chmod':
     command  => "/bin/chmod -R 755 /srv/"
   } ->
   file { "phpapp_ensure_domain_1":
