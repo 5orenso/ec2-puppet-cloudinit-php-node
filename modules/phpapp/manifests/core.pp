@@ -7,7 +7,7 @@ class phpapp::core {
     cwd     => "/srv/",
     require => Class["phpapp::prework"]
   } ->
-  exec { 'www_data_chown':
+  exec { 'phpapp_www_data_chown':
     command  => "/bin/chown -R www-data:www-data /srv/"
   } ->
   exec { 'www_data_chmod':

@@ -8,7 +8,7 @@ class nodeapp::core {
         require => Class["nodeapp::prework"]
     } ->
 
-    exec { 'www_data_chown':
+    exec { 'nodeapp_www_data_chown':
         command  => "/bin/chown -R www-data:www-data /srv/"
     } ->
 
